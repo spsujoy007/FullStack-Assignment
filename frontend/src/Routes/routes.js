@@ -18,8 +18,8 @@ export const routes = createBrowserRouter([
                 element: <CreateCard></CreateCard>
             },
             {
-                path: '/card/:id',
-                loader: async ({params}) => await fetch(`http://localhost:5000/helpcard/${params.id}`),
+                path: '/card/:title/:id',
+                loader: async ({params}) => await fetch(`https://helphand.vercel.app/cards/${params.id}`),
                 element: <DetailCard></DetailCard>
             }
         ]

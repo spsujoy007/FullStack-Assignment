@@ -7,8 +7,8 @@ const DetailCard = () => {
     }, []);
     const {title, description} = useLoaderData()
     return (
-        <div className='pt-10 min-h-screen'>
-            <div className='w-[1240px] mx-auto border-t-2 border-purple-500 pb-20'>
+        <div className='pt-10 min-h-screen md:p-0 p-3'>
+            <div className='md:w-[1240px] mx-auto border-t-2 border-purple-500 pb-20'>
                 <h1 className='text-[50px] uppercase text-purple-500 font-bold'>{title}</h1>
                 <p className='text-xl mt-3'>{description}</p>
                 <div className='flex justify-end mt-10'>

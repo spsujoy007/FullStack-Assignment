@@ -1,22 +1,26 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 5000
-const cors = require('cors');
+
+const cors = require('cors')
+require('dotenv').config()
+
 const mongoose = require('mongoose');
-
 const HelpCard = require('./model/helpcardModel');
-
-mongoose.connect('mongodb+srv://GlobalServerPrac:atHaLf7FtMqWha6e@cluster0.6ke0m0t.mongodb.net/frontend-assignment?retryWrites=true&w=majority&appName=Cluster0')
-  .then(() => console.log('Connected!'));
 
 app.use(express.json())
 app.use(cors())
+
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.6ke0m0t.mongodb.net/frontend-assignment?retryWrites=true&w=majority&appName=Cluster0`
+mongoose.connect(uri)
+  .then(() => console.log('Connected!'));
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.post('/makecard', async(req, res) => {
+app.post('/cards', async (req, res) => {
     try{
         const {id, title, description} = req.body
         const Newcard = new HelpCard({
@@ -34,9 +38,9 @@ app.post('/makecard', async(req, res) => {
     }
 })
 
-app.get('/helpcards', async(req, res) =>{
+app.get('/cards', async (req, res) =>{
     const findText = req.query.findtext
-    const data = await HelpCard.find()
+    const data = await HelpCard.find().sort({_id: -1})
     if(findText !== 'undefined'){
         const filterdata = data.filter(d => 
             d.title.toLowerCase().includes(findText.toLowerCase()) || 
@@ -46,7 +50,7 @@ app.get('/helpcards', async(req, res) =>{
     return res.send(data)
 })
 
-app.get('/helpcard/:id', async(req, res) =>{
+app.get('/cards/:id', async(req, res) =>{
     const id = req.params.id;
     const data = await HelpCard.findOne({id: id});
     res.send(data)
