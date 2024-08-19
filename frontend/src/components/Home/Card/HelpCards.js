@@ -60,15 +60,15 @@ const Cards = () => {
                             :
                             <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
                             {
-                                helpcards.map((item, i) => 
+                                helpcards.map(({title, description, id}, i) => 
                                     <div 
-                                    onClick={() => navigate(`/card/${item.title}/${item.id}`)}
+                                    onClick={() => navigate(`/card/${title}/${id}`)}
                                         key={i}
                                         className='bg-gray-50 border-[1px] border-purple-400 rounded-xl'
                                     >
-                                        <h2 className='text-xl font-bold border-b-[1px] px-4 text-purple-500 py-2 border-gray-400'>{item.title}</h2>
+                                        <h2 className='text-xl font-bold border-b-[1px] px-4 text-purple-500 py-2 border-gray-400'>{title}</h2>
                                         <p className='p-4 '>
-                                            {item.description}
+                                            {description.length > 350 ? description.slice(0, 350)+'...' : description}
                                         </p>
                                     </div>)
                             }

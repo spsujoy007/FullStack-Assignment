@@ -49,13 +49,13 @@ const CreateCard = () => {
             <div className=' gap-5 w-full p-5 md:p-0'>
             <form onSubmit={handleSubmitData} className=' md:w-[800px] mx-auto'>
                 <label htmlFor="id" className='text-sm font-bold pl-1'>Id</label><br />
-                <input id='id' name='id' className='mt-1 outline-none border-[1px] border-gray-400 px-3 py-2 w-full rounded-md' placeholder='unique id' type="text" />
+                <input id='id' name='id' className='mt-1 outline-none border-[1px] border-gray-400 px-3 py-2 w-full rounded-md' placeholder='unique id' type="number" required />
                 {
                     error && <p className='text-red-600 text-sm'>{error}</p>
                 }
                 <div className='my-3'>
                     <label htmlFor="title" className='text-sm font-bold pl-1'>Title</label><br />
-                    <input id='title' name='title' className='mt-1 outline-none border-[1px] border-gray-400 px-3 py-2 w-full rounded-md' placeholder='Create a title' type="text" />
+                    <input required id='title' name='title' className='mt-1 outline-none border-[1px] border-gray-400 px-3 py-2 w-full rounded-md' placeholder='Create a title' type="text" />
                 </div>
 
                 <label htmlFor="description" className='text-sm font-bold pl-1'>Description</label><br />
