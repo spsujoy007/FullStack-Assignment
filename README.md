@@ -6,6 +6,9 @@ This is a basic full-stack website based on MERN
 ## Demo
 Live: https://helpinghand-sp.netlify.app/ 
 
+### Language and framework
+* React, NodeJS, ExpressJS, MongoDB, Mongoose, Tailwind CSS
+
 ***This demo website is hosted in Netlify.***
 ## API Reference
 
